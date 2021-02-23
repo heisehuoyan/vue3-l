@@ -1,0 +1,24 @@
+{
+  "private": "true",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "build": "node scripts/build.js"
+  },
+  "name": "vue3-l",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:heisehuoyan/vue3-l.git",
+  "author": "liangchunjian <liangchunjian@forchange.tech>",
+  "license": "MIT",
+  "dependencies": {
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^11.2.0",
+    "execa": "^5.0.0",
+    "rollup": "^2.39.0",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "typescript": "^4.1.5"
+  }
+}

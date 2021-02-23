@@ -1,0 +1,3 @@
+const vueshared = {};
+
+export { vueshared };

@@ -8,6 +8,7 @@
   </head>
 
   <body>
+    <div id="app"></div>
     <script src="../node_modules/@vue/reactivity/dist/reactivity.global.js"></script>
     <script>
       let {
@@ -15,9 +16,17 @@
         shallowReactive,
         reacdonly,
         shallowReacdonly,
+        effect,
       } = VueReactivity;
-        let state =reactive({name:'lcj',age:{n:100}})
-      console.log(state)
+      let state = reactive({ name: "lcj", age: { n: 100 } });
+      console.log(effect);
+
+      effect(() => {
+        app.innerHtml = "lcj" + state.name + state.age.n;
+      });
+      // effect(() => {
+      //   app.innerHtml = "lcj" + state.name + state.age.n;
+      // });
     </script>
   </body>
 </html>

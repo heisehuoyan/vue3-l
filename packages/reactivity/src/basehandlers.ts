@@ -1,5 +1,6 @@
 import { extend, isObject } from "@vue/shared/src";
 import { reacdonly, reactive } from "./reactive";
+import { track } from "./effect";
 
 // 实现拦截方法
 // 是不是仅读，仅读的属性set报异常
@@ -15,6 +16,7 @@ function createGetter(isReadonly = false, isShallow = false) {
     const res = Reflect.get(target, key, receiver); // 等价于target[key] // 固定的api ，反射，去proxy取值，它就吧原来的目标的值反射回去
 
     if (!isReadonly) {
+      track(target, TrackOpType.GET, key); // 执行effect时会取值，收集effect
       // 不是仅读的，收集依赖，等数据变化后更新视图
     }
 
@@ -35,6 +37,9 @@ function createSetter(isShallow = false) {
   // 设置值时触发set方法
   return function set(target, key, value, receiver) {
     const result = Reflect.set(target, key, value, receiver); // 等价于 target[key] =value
+
+    // 当数据更新时，通知对应属性的effect重新执行
+    //todo
     return result;
   };
 } // 拦截设置功能

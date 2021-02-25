@@ -5,3 +5,4 @@ export {
   reacdonly,
   shallowReacdonly,
 } from "./reactive";
+export { effect } from "./effect";
